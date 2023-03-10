@@ -1,7 +1,17 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import {useState} from "react";
 
 export default function Home() {
+	const [pokeImage, setPokeImage] = useState("");
+
+	const getNewPokemon = async () => {
+		const response = await fetch("https://pokeapi.co/api/v2/pokemon/1");
+		const pokemonData = await response.json();
+		console.log(pokemonData);
+		setPokeImage(pokemonData.sprites.front_default);
+	};
+
 	return (
 		<>
 			<Head>
@@ -10,7 +20,14 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1"/>
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
-			<main>Content will go here</main>
+			<main>
+				<h1>Who's that pokemon</h1>
+				<button onClick={getNewPokemon}>New pokemon</button>
+				<div>image here</div>
+				<img src={pokeImage}/>
+				<input/>
+				<button>Check my answer</button>
+			</main>
 		</>
 	);
 }
