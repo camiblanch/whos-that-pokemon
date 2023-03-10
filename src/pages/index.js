@@ -6,9 +6,14 @@ export default function Home() {
 	const [pokeImage, setPokeImage] = useState("");
 
 	const getNewPokemon = async () => {
-		const response = await fetch("https://pokeapi.co/api/v2/pokemon/1");
+		const getRandomPokemonNumber = () => {
+			const maxPokemonNumber = 151;
+			const number = Math.floor(Math.random() * maxPokemonNumber);
+			return number === 0 ? 1 : number;
+		};
+
+		const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + getRandomPokemonNumber());
 		const pokemonData = await response.json();
-		console.log(pokemonData);
 		setPokeImage(pokemonData.sprites.front_default);
 	};
 
