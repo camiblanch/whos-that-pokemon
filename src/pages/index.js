@@ -7,6 +7,10 @@ export default function Home() {
 	const [pokeName, setPokeName] = useState("");
 	const [guess, setGuess] = useState("");
 
+	const guessIsCorrect = () => {
+		return pokeName.toLowerCase() === guess.toLowerCase();
+	}
+
 	const getNewPokemon = async () => {
 		const getRandomPokemonNumber = () => {
 			const maxPokemonNumber = 151;
@@ -20,6 +24,10 @@ export default function Home() {
 		setPokeName(pokemonData.name);
 	};
 
+	const altText = () => {
+		return guessIsCorrect() ? pokeName : "Who's that pokemon?";
+	}
+
 	return (
 		<>
 			<Head>
@@ -31,8 +39,7 @@ export default function Home() {
 			<main>
 				<h1>Who's that pokemon</h1>
 				<button onClick={getNewPokemon}>New pokemon</button>
-				<div>image here</div>
-				<img src={pokeImage}/>
+				<img src={pokeImage} alt={altText()}/>
 				<input value={guess} onChange={(e) => {setGuess(e.target.value)}}/>
 			</main>
 		</>
