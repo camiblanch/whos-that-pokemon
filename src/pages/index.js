@@ -4,6 +4,8 @@ import {useState} from "react";
 
 export default function Home() {
 	const [pokeImage, setPokeImage] = useState("");
+	const [pokeName, setPokeName] = useState("");
+	const [guess, setGuess] = useState("");
 
 	const getNewPokemon = async () => {
 		const getRandomPokemonNumber = () => {
@@ -15,6 +17,7 @@ export default function Home() {
 		const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + getRandomPokemonNumber());
 		const pokemonData = await response.json();
 		setPokeImage(pokemonData.sprites.front_default);
+		setPokeName(pokemonData.name);
 	};
 
 	return (
@@ -30,8 +33,7 @@ export default function Home() {
 				<button onClick={getNewPokemon}>New pokemon</button>
 				<div>image here</div>
 				<img src={pokeImage}/>
-				<input/>
-				<button>Check my answer</button>
+				<input value={guess} onChange={(e) => {setGuess(e.target.value)}}/>
 			</main>
 		</>
 	);
