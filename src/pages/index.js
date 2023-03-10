@@ -26,7 +26,7 @@ export default function Home() {
 
 	const altText = () => {
 		return guessIsCorrect() ? pokeName : "Who's that pokemon?";
-	}
+	};
 
 	return (
 		<>
@@ -39,7 +39,7 @@ export default function Home() {
 			<main>
 				<h1>Who's that pokemon</h1>
 				<button onClick={getNewPokemon}>New pokemon</button>
-				<img src={pokeImage} alt={altText()}/>
+				<img src={pokeImage} alt={altText()} className={`${styles.pokeImage} ${!guessIsCorrect() && styles.mask}`}/>
 				<input value={guess} onChange={(e) => {setGuess(e.target.value)}}/>
 			</main>
 		</>
