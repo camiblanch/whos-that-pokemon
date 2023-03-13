@@ -4,5 +4,5 @@
 }
 
 .mask {
-	filter: grayscale(100%) contrast(208%) blur(4px)
+	filter: grayscale(100%) contrast(0%) blur(4px)
 }
