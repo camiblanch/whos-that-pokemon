@@ -1,2 +1,4 @@
-# cursor-pointer
-A website that lets you reassign your cursor as a pointer, just for fun
+# Who's that Pokemon???
+Play who's that pokemon
+
+An excercise in learning TypeScript, refactoring, and user experience
